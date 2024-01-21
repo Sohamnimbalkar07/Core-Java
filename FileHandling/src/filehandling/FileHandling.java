@@ -18,12 +18,15 @@ public class FileHandling {
 			PrintWriter pw = new PrintWriter(new FileWriter(sc.nextLine()));
 			)
 		{
-			String s = null;
-			while((s= br.readLine()) != null)
-			{
-				pw.println(s);
-			}
-			System.out.println("File copy done!");
+//			String s = null;
+//			while((s= br.readLine()) != null)
+//			{
+//				pw.println(s);
+//			}
+//			System.out.println("File copy done!");
+			
+			br.lines()// Stream<String>
+		    .forEach(line -> pw.println(line));
 		}
 		catch(Exception e)
 		{
