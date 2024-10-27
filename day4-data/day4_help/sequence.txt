@@ -1,0 +1,98 @@
+Today's Topics
+
+Revise with mem pics : array of references
+static keyword
+Inheritance 
+Polymorphism
+
+Revise
+Arrays Mem Pic
+
+Dynamic init of arrays
+eg : int[] ints=new int[] {10,20,30,40,50};//array cls gets loaded, array obj created in the heap , array is inited
+
+
+API --java.util.Arrays : helper class for array handling
+Method 
+public static String toString(double[] a)
+Returns a string representation of the contents of the specified array.
+
+
+1. Multi dimensional arrays : Array of arrays (array of references)
+
+Two dimensional array:
+int[][] twoDArr = new int[10][20];//[[I class loaded in method area , array object , inited to null
+
+Three dimensional array:
+int[][][] threeDArr = new int[10][20][30];
+
+Size of multidimensional arrays: The total number of elements that can be stored in a multidimensional array is calculated by multiplying the size of all the dimensions.
+
+
+What will be the memory diagram for 
+double[][] data=new double[3][4]; 
+
+2. Unlike C/C++, each row of the multidimensional array in Java can be of different lengths.
+Solve this
+int[][] data = new int[2][];
+data[0]=new data[3];
+data[1]=new data[4];
+
+How will you init them ? : nested for loop
+How will you display them ? Arrays.deepToString
+
+Dynamic init of arrays 
+int[][] data={{1,2,3},{4,5},{6,7,8,9}};
+Display it : for loop / for-each / Arrays.deepToString
+
+
+
+2. static keyword
+refer : "regarding static"
+
+Q : Emp class 
+Given : class Emp
+{
+ private int id;
+ private String name;
+ private double salary;
+ private static int noOfEmps;
+}
+If 10 emps are hired(i.e 10 emp objects are created , how many copies of
+id :10
+name : 10 
+salary : 10
+noOfEmps : 1 copy shared across 10 emp objects.
+
+
+
+
+3. Inheritance 
+refer to "readme inheritance n polymorphism.txt" from today's help.
+Person-Student-Faculty scenarion (constr invocation in inheritance hierarchy)
+
+
+
+4.1 What is inheritance  n Why 
+4.2 Real life Examples 
+4.3 Types
+4.4 constr invocation in inheritance hierarchy
+super keyword
+4.5 Show details : via toString : method overriding
+
+-----Pending -----------
+Objective : Arrange an event to invite students n faculties
+(eg : EventOrganizer app : tester --main / scanner)
+Prompt user for event capacity.
+Create suitable data structure to hold the participant details
+
+Options 
+1. Register Student : 
+2. Register Faculty : 
+3. Display participant details : for-each 
+10. Exit
+
+
+
+
+
