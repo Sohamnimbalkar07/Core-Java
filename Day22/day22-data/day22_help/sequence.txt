@@ -1,0 +1,39 @@
+ITC
+User Threads vs Daemon Threads
+Cloning
+
+
+Revise
+What is synchronization ? : Applying htread safety
+Why ? To avoid the race condition (i.e to guard a critical section)
+When it's required ? : In a multi threaded system , when multiple threads are accessing the SAME SHARED resource(eg : ArrayList/JointAccount/file/socket/seats...) , when some treads are reading n others are updating resource.
+Immutable objects(eg : String,LocalDate,LocalTime..,wrappers) are inheretly thread safe.
+Which techniques ? synched methods or synched blocks
+
+Answer this
+1. Lock/monitor is assciated with : java object / method / block / class : Object
+2. When does thrd need to acquire the lock ?  either while calling synched method or code within synched blcok
+3. Can single thrd acquire multiple locks ? YES
+4. Can 1 lock be shared across multiple threads  ? NO
+5. Blocking trigger : Blocked on a monitor(i.e whne a thread tries to acquire the lock , n lock is already taken by some other thread) : outside the gate of the monitor
+Un blocked trigger : Lock released or monitor free
+6. Name the conditions under which lock is not released ? : sleep,join,yield,notify, ctx switching  
+7. Can a class contain synchronized as well as non synchronized methods? Yes
+8. Can you run thread un safe APIs , in thread safe manner ? YES
+How ? : synched blocks
+------------------------
+ITC
+Refer to no_itc
+Does Utils class contain Thread safe APIs (read n write methods) : YES
+Is atomicity(mutually exclusive behavior) seen ? YES
+(i.e while producer is producing data , can consumer read it n vice versa : NO)
+Are there any problems observed even after applying synchronization : YESSS
+
+What's the cause of it ?
+
+Problem n it's solution
+
+User vs Daemon Threads
+
+Cloning
+----------------------------------------

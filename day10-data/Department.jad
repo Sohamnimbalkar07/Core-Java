@@ -1,0 +1,49 @@
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   Department.java
+
+package test_enum;
+
+
+public final class Department extends Enum
+{
+
+    private Department(String s, int i)
+    {
+        super(s, i);
+    }
+
+    public static Department[] values()
+    {
+        Department adepartment[];
+        int i;
+        Department adepartment1[];
+        System.arraycopy(adepartment = ENUM$VALUES, 0, adepartment1 = new Department[i = adepartment.length], 0, i);
+        return adepartment1;
+    }
+
+    public static Department valueOf(String s)
+    {
+        return (Department)Enum.valueOf(test_enum/Department, s);
+    }
+
+    public static final Department RND;
+    public static final Department FINANCE;
+    public static final Department MARKETING;
+    public static final Department HR;
+    public static final Department PRODUCTION;
+    private static final Department ENUM$VALUES[];
+
+    static 
+    {
+        RND = new Department("RND", 0);
+        FINANCE = new Department("FINANCE", 1);
+        MARKETING = new Department("MARKETING", 2);
+        HR = new Department("HR", 3);
+        PRODUCTION = new Department("PRODUCTION", 4);
+        ENUM$VALUES = (new Department[] {
+            RND, FINANCE, MARKETING, HR, PRODUCTION
+        });
+    }
+}

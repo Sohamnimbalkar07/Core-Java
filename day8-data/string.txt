@@ -1,0 +1,81 @@
+->String is a java object that represents a sequence of chracters.
+->java.lang.String class is used to create and manipulate strings thus it is a reference type not primitive type.
+->string is immmutable  in nature it means manipulation of data we cannot do.
+with string we can perform various operation like
+search,substring,create new string
+->java.lang.String is a class in java it implements several iterfaces like
+Serializable,Comparable,CharSequence
+->string is a final class we cant inherit
+->serializable is a marker interface that contain no member or method,
+it is just marking classes so that compiler may know about these classes,
+->comparable used for ordering the object of any user defined  classes
+found in java.lang.package and contain 1 method named comparedTo(object)
+A charsequence is parent to 3 classes:-
+string-immutable
+string builder:-mutabble
+string buffer:-mutable
+->string in memory created in string pool,
+java string pool refers to collection of strings which are stored in heap area
+string pool will help saving space for java runtime
+
+->we create string by 2 ways:-
+new keyword,literal
+String str="sid";
+here str is reference variable pointing to sid
+in string pool we store sid
+now before string literal first look for string with same value in string pool if found it returns reference else it 
+creates a new string in the pool and return the reference
+String str1="sid"
+now str1 also point to sid
+once a literal is created it cannot be recreated
+for different string literal we have different memory region created
+--->
+String object using new keyword it always create a new object in heap
+String str=new String("sid"); here new obkect created in heap memory
+thus we can create stringby literal and new keyword;
+
+
+->String methods
+boolean equals(object another):-checks the equality within the given object
+equalsIgnoreCase():-compares another string without matching the cases
+length():-return length of string
+charAt(i):-returns character at index i
+toUpperCase():-returns string in upper case
+toLowerCase():-returns string in lower case
+replace(oldval,newval):-replaces old occurances of specified char value with given vakue
+trim():-removes the whitespaces from the begining and ending of string
+contains("value"):-checks for the matching sequence of char value and return T/F
+toCharArray:-convert a string to a new character array
+IsEmpty():-to check string is empty or lot
+endsWith():-checks if the string ends with specigied suffix
+concat():-appending and get new string
+
+-->
+string class is final to prevent inheriting of its feature by other classes
+
+In Java, String objects are immutable. Immutable simply means unmodifiable or unchangeable.
+class Test{  
+ public static void main(String args[]){  
+   String s="Aman";  
+   s.concat(" Agrawal");//concat() method appends the string at the end  
+   System.out.println(s);//will print Aman because strings are immutable objects  
+ }  
+}  
+->String concatenation forms a new String that is the combination of multiple strings. 
+There are two ways to concatenate strings in Java:
+
+By +  operator
+By concat() method
+
+
+
+
+
+
+
+
+
+
+
+
+

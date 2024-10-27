@@ -1,0 +1,150 @@
+Today's Topics
+Revision
+ArrayList Vs LinkedList
+Wild Card in generics & bounds
+Java 8 Date n Time Handling
+Set interface & implementation classes
+
+Revision
+0. Revise Collection framework overview.
+1. Revise complete example of Day13
+2. Sorting in Java
+Which are 2 ways of sorting in Java ?
+Natural Ordering (Internal / Implicit) : Sorting criteria is within UDT : type of List (eg : Emp , Account, Customer...)
+
+Custom Ordering (External / explicit) : Sorting criteria is kept in a separate class OR  ano inner class OR lambda expression
+
+Sorting elements in the List
+eg : ArrayList<Customer> 
+Steps for 1. Sort customer details , as per email (asc) : Use Natural Ordering
+1.1 n 1.2 public class Customer imple Comparable<Customer>{...
+
+@Override
+public int compareTo(Customer c)
+{
+  //sorting key : email : String
+  return this.email.compareTo(c.email);
+}
+
+}
+
+1.3 Collections.sort(customerList);
+eg : customerList : [c1,c2,c3,c4,c5.....]
+c1.compareTo(c2) : < 0 => no swap
+=0  => no swap
+> 1 => swap
+
+
+2. Sort customer details , as per Dob (desc ) n name : custom ordering , using separate class.
+2.1 n 2.2  public class CustomerDobNameComparator imple Comparator<Customer>
+{
+@Override
+ public int compare(Customer c1,Customer c2)
+{
+  //compare by dob
+  int retVal=c1.getDob().compareTo(c2.getDob());
+  if(retVal == 0) //same dob
+   return c1.getName().compareTo(c2.getName());
+  //=> dob different
+  return retVal;  
+}
+}
+
+2.3 1st arg : list to be sorted
+2nd arg : instance of the class , that imple Comparator (Comparator instance)
+Collections.sort(customerList,new CustomerDobNameComparator());
+eg : customerList : [c1,c2,c3,c4,c5.....]
+comp.compare(c1,c2) : 0 or -1 : no swap
+> 0 : swap 
+
+
+
+
+
+3. Sort customer details , as per Dob  n name : custom ordering , using anonymous inner class.
+//new Comparator<Customer>() => instance of the ano inner cls that imple Comaprator
+Collections.sort(customerList,new Comparator<Customer>()
+{ //ano inner cls begins
+  @Override
+ public int compare(Customer c1,Customer c2)
+{
+  //compare by dob
+  int retVal=c1.getDob().compareTo(c2.getDob());
+  if(retVal == 0) //same dob
+   return c1.getName().compareTo(c2.getName());
+  //=> dob different
+  return retVal;  
+}
+}//ano inner cls ends
+);
+
+
+4. Create another Tester : TestCustomOrdering3.java
+Display customer details sorted as per reg amount (MUST use custom ordering + ano inner class)
+
+
+
+4. LinkedList
+Refer to : Collection Framework Overview diagram.
+diagrams : Types of linked lists , node , insert n delete operations
+Refer to readme
+Solve ready code samples.
+Compare ArrayList Vs LinkedList
+
+
+5. More in generics
+Refer to : generics sequence
+
+Objective : Create a class GenericUtils , as a non generic class
+1. Add a static method to print elements of any type of the List.
+eg : printList(....)
+Test cases :
+printList : List<Integer> , List<Double> , List<String> ....
+
+2. Add a static method to compute salary of List of emps / mgr/ salesmgr / tempworker.
+eg : invokeComputeSalary(...)
+Test cases : AL<Emp> , Vector<Worker> , LinkedList<Mgr>
+
+
+-----------------Pending---------------
+
+6. Java 8 New Features
+
+Java 8 Date/Time related APIs
+Java 8 New Features 
+java.time : new package is introduced
+LocalDate : Date (immutable)(yr-mon-day)  : inherently thrd safe.
+API 
+1. public static LocalDate now()
+Obtains the current date from the system clock in the default time-zone.
+eg : 
+LocalTime : Time (immutable)(hr-min-sec)  : inherently thrd safe.
+LocalDateTime : Date n Time :  inherently thrd safe.
+eg : ???
+2. public static LocalDate of(int year,int month,int dayOfMonth)
+Obtains an instance of LocalDate from a year, month and day.
+eg : ?????
+3. public static LocalDate parse(CharSequence text)
+Obtains an instance of LocalDate from a text string such as 2007-12-03.
+eg : LocalDate dt=parse(sc.next());//0 based dates
+4. Methods :
+isBefore,isAfter,isEqual
+5. Can you change default DateTime format ? : YES
+
+
+6. Enter Sets
+HashSet , LinkedHashSet , TreeSet
+
+7. Hashing Algorithm
+
+5. Enter Sets
+
+Example of strings having same hashcode
+Aa BB
+Ba CB 
+Ca DB
+Da EB
+BBBB AaBB AaAa BBAa
+FB Ea
+
+

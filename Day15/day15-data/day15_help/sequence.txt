@@ -1,0 +1,163 @@
+Today's Topics
+Revise generic syntax
+Enter Sets 
+Hashing Algorithm
+
+
+Generic syntax :
+? : wild card in generic syntax (it can be replaced by ANY type) : un bounded wild card
+eg : Collections class Methods : shuffle , reverse
+GenericUtils method : printList
+
+More keywords : 
+extends : Represents upper bound
+super : Represents lower bound
+? extends E : ANY type E or its sub type 
+? super E : E or its super type
+
+
+
+API : public ArrayList​(Collection<? extends E> c)
+E : Emp 
+Meaning : Above Constructor creates a populated list of type Emp from : AL/LL/Vector/HS/LHS/TS
+of the generic type : Emp or it's sub type
+
+
+What will happen ? (javac error or no error?)
+1. Vector<Mgr> mgrs=new Vector<>();
+mgs.add(m1)....m10
+ArrayList<Emp> emps=new AL<>(mgrs);//no javac err
+
+2. HashSet<HRMgr> hrMgrs=new HS<>();
+hrMgrs.add(hrm1)....hrm10
+ArrayList<Emp> emps=new AL<>(hrMgrs);//no err
+
+3.
+ArrayList<Mgr> mgrs=new AL<>();
+mgrs.add(m1).....m10
+LinkedList<HRMgr> hrMgrs=new LinkedList<>(mgrs);//javac err :  Mgr IS NOT A HrMgr
+
+
+
+
+
+Collections class(Non generic class) :  Can contain a generic Method
+eg : super keyword in generics : lower bound
+Method of Collections class
+public static <T> void sort(List<T> list,Comparator<? super T> c)
+generic method : 
+where does type declaration fit ? : between method modifers n ret type
+1st arg : List<T> list : You can pass List of ANY type (eg : AL/LL/Vector : no err
+HS/LHS/TS : javac err
+HM/LHM/TM : javac err) : 
+Can you pass List of the following types :  
+T --Customer , Student(extends Person) , BankAccount,Flight, Movie,Person , DacStudent (extends Student)
+if above classes have not imple Comparable or Comparator : No ERROR
+
+2nd arg : Comparator<? super T> c
+Instance of the class which imple Comparator i/f
+eg : Collections.sort(studentList,comp);//comp : imple Comparator<Student>  : no err
+ Collections.sort(studentList,comp);//comp : imple Comparator<Fruit> : javac err (Fruit is neither a  Student nor it's super type)
+Collections.sort(studentList,comp);//comp : imple Comparator<Person> : no err
+Collections.sort(studentList,comp);//comp : imple Comparator<Object> : no err
+Collections.sort(studentList,comp);//comp : imple Comparator<PGDacStudent> : err
+
+
+Refer : https://howtodoinjava.com/java/generics/java-generics-what-is-pecs-producer-extends-consumer-super/
+
+3. Solve generic questions
+
+3.5 
+Explain this
+Colections class API /method
+public static <T extends Comparable<? super T>> void sort​(List<T> list)
+
+Above method uses : Natural Ordering
+Can you pass as the  argument 
+AL<Student>
+Vector<DACStudent>
+HS<Customer>
+LinkedList<Emp>
+
+if Student / DACStudent / Customer / Emp : has not implemented Comparable i/f : NO
+
+<T extends Comparable<? super T>> : T must implement Comparable i/f
+Generic type of the Comparable i/f : T or it's super type
+
+
+
+4. Can you write a method in GenericUtils class , to copy references from any type of the list to any other type of the list  ? 
+(in lab session)
+
+If no , explain the reason.
+How to modify above copy method with suitable restrictions ?
+It should pass following tests
+4.1 You should be able to copy references from AL<Worker> to ANY List<Emp>
+4.2 You should be able to copy references from Vector<Mgr> to ANY List<Emp>
+4.3 You should be able to copy references from LinkedList<SalesMgr> to ANY List<Emp>
+4.4 Refer to earlier Fruits hierarchy (from Q 2)
+You should be able to copy references from LinkedList<WaterMelon> to ANY List<Melon>
+You should be able to copy references from ArrayList<WaterMelon> to ANY List<Fruit>
+
+Note : You are not allowed to use a readymade Collections methods
+
+
+---------------------------
+Enter Sets
+1. Sets overview
+refer to a diagram : "Regarding Sets"
+
+HashSet , LinkedHashSet , TreeSet
+
+2. HashSet
+
+Test HashSet API with String/Integer Set
+
+Create HashSet<Emp> : User defined type .
+Observe n conclude.
+
+
+What is hashing ?
+Hashing means using some function or algorithm to map object data to some representative integer value.
+
+Refer to a diag : Hashing Internals
+
+
+
+
+
+
+2. Java 8 Date/Time related APIs
+Java 8 New Features 
+java.time : new package is introduced
+LocalDate : Date (immutable)(yr-mon-day)  : inherently thrd safe.
+API 
+1. public static LocalDate now()
+Obtains the current date from the system clock in the default time-zone.
+eg : 
+LocalTime : Time (immutable)(hr-min-sec)  : inherently thrd safe.
+LocalDateTime : Date n Time :  inherently thrd safe.
+eg : sop("curnt date "+now());
+2. public static LocalDate of(int year,int month,int dayOfMonth)
+Obtains an instance of LocalDate from a year, month and day.
+eg : ?????
+3. public static LocalDate parse(CharSequence text)
+Obtains an instance of LocalDate from a text string such as 2007-12-03.
+eg : LocalDate dt=LocalDate.parse(sc.next());//0 based dates
+4. Methods :
+isBefore,isAfter,isEqual
+5. Can you change default Date format ? : YES
+
+6. Computing Age
+
+
+
+Example of strings having same hashcode
+Aa BB
+Ba CB 
+Ca DB
+Da EB
+BBBB AaBB AaAa BBAa
+FB Ea
+
+

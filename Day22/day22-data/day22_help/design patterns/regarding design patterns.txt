@@ -1,0 +1,97 @@
+What are design patterns ?
+
+Design patterns are generally sets of standard practices used in the software development industry. They represent the solutions given by the developer community to general problems faced in every-day tasks regarding software development.
+
+Why  Java design pattern?
+
+They are reusable in multiple projects.
+They provide a solution that helps to define the system architecture.
+Capture software engineering experiences.
+Provide transparency to the design of an application.
+Well-proven since they are built upon the knowledge and experience of expert software developers.
+
+What Is Gang of Four (GOF)?
+
+In 1994, four authors Erich Gamma, Ralph Johnson, Richard Hel, and John Vlissides published a book titled Design Patterns Elements of Reusable Object-Oriented Software. This book introduced the concept of Design Pattern in Software development.
+These four authors are known as Gang of Four GOF.
+
+
+
+Categories Java Design patterns?
+Based on problem they are  categorized  into 
+
+1. Creational patterns
+
+Factory method/Template
+Abstract Factory
+Builder
+Prototype
+Singleton
+
+2. Structural patterns
+
+Adapter
+Bridge
+Filter
+Composite
+Decorator
+Facade
+Flyweight
+Proxy
+
+3. Behavioral patterns
+
+Interpreter
+Template method/ pattern
+Chain of responsibility
+Command pattern
+Iterator pattern
+Strategy pattern
+Visitor pattern
+
+4.J2EE patterns
+
+MVC Pattern
+Data Access Object pattern
+Front controller pattern
+Intercepting filter pattern
+Data Transfer object pattern
+
+
+
+Singleton
+In object-oriented programming, a singleton class is a class that can have only one object (an instance of the class) at a time, in a particular JVM.
+It is a creational design pattern which talks about the creation of an object.
+
+After first time, if we try to instantiate the Singleton class, the new variable also points to the first instance created. So whatever modifications we do to any variable inside the class through any instance, it affects the variable of the single instance created and is visible if we access that variable through any variable of that class type defined.
+
+eg : Device drivers, Cache , DB connection
+
+How To design a singleton class?
+
+Private constructor to restrict instantiation of the class from other classes.
+Private static variable of the same class that is the only instance of the class.
+Public static method that returns the instance of the class, this is the global access point for outer world to get the instance of the singleton class.
+
+Lazy initialization
+Mark constructor as private.
+Write a static method that has return type object of this singleton class. 
+
+Eager initialization
+
+In eager initialization, the instance of Singleton Class is created at the time of class loading, this is the easiest method to create a singleton class but it has a drawback that instance is created even though client application might not be using it.
+
+Mark constructor as private.
+Create static init block to instantiate a singleton
+----------------------------------------
+
+Factory design pattern
+
+It is a creational design pattern which talks about the creation of an object. The factory design pattern says that define an interface ( A java interface or an abstract class) and let the subclasses decide which object to instantiate. The factory method in the interface lets a class defer the instantiation to one or more concrete subclasses.  It is one of the best ways to create an object where object creation logic is hidden to the client. 
+
+Implementation: 
+1. Define a factory method inside an interface. 
+2. Let the subclass implements the above factory method and decide which object to create. 
+In Java constructors are not polymorphic, but by allowing subclass to create an object, we are adding polymorphic behavior to the instantiation. i.e we are trying to achieve Pseudo polymorphism by letting the subclass to decide what to create, and so this Factory method is also called as Virtual constructor. 
+
+eg : Shape Scenario

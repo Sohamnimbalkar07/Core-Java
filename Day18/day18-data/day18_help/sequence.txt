@@ -1,0 +1,72 @@
+Today's topics
+Revise lambda expressions , by solving yesterday's assignments
+
+4. Try this , in continuation of yesterday's customer management system.
+
+Start with customer List
+Tester :
+ArrayList<Customer> customers=populateList(...);
+
+4.1 Remove all customer details , under specified plan , born after specific date
+I/P : plan n date
+ functional prog style.
+sop("Enter plan");
+CustomerPlan plan=CustomerPlan.valueOf(sc.next().toUpperCase());
+LocalDate date=LocalDate.parse(sc.next());
+customers.removeIf(c -> c.getPlan() == plan && c.getDob().isAfter(date));
+
+
+4.2 Display customer details , sorted as per dob , using custom ordering.
+Collections.sort(customers,(c1,c2) -> c1.getDob().compareTo(c2.getDob()));
+customers.forEach(c -> sop(c));
+
+
+
+
+
+4.3 Display customer details , sorted as per email (asc order) : Naturlar ordering
+Customer imple Comparable , compareTo
+
+4.4 If Customer details are stored in a HashMap ,  sorted as per email (asc order) : Naturlar ordering
+Use TreeMap
+
+------------------------------------
+1 Function literal
+Integer i=1234;//i : Integer literal
+String s="hello";//s : string literal
+//Func literal 
+Comparator<Customer> comp =(c1,c2) -> c1.getDob().compareTo(c2.getDob());
+Collections.sort(customers,comp);//use case of func literal
+
+
+
+
+2. Method references
+refer to "regarding method reference.txt"
+
+3. Using above API(higher order funcs) , can you chain multiple operations like sorting & displaying the sorted data ? 
+OR
+Filter the elements n display filtered list. 
+Objective : Suppose you have list of products.
+Accept product category from user
+remove all products from specified category n display remaining list
+
+4. Enter Java 8 Streams
+4.1 Refer to <streams> : diagrams
+collections vs streams n streams basics
+4.2 Refer to "streams_sequence"
+
+5. Enter I/O
+5.1 Read data from text file , using buffer , till EOF n display it.
+
+
+Read data from text file using buffer , till EOF(end of file) n display it : declarative (functional) style 
+
+
+Read data from text file using buffer , till EOF(end of file) , filter lines having  line length > 50  , upper case contents n then display it.
+br --> stream(lines) ---> filter --> map --> forEach
+
+
+Objective : Copy files using buffer.
+i/p : src file name 
+dest file name

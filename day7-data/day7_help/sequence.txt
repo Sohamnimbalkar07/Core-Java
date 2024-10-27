@@ -1,0 +1,54 @@
+Today's Topics
+Revise interfaces
+About protected access specifier
+Object class method equals 
+
+Exception Handling 
+
+Revise 
+What is an interface (i/f) : blue print of the class
+Why ? 
+1. Complete abstraction
+2. A solution for multiple inheritance
+3. loose coupling => complete separation between WHAT(specs --abstract methods--i/f) & HOW (implementation --imple classes)
+
+Till JDK 7 : What does i/f  mainly contain ?
+data members : public static final
+methods : public abstract
+
+Relationship between i/f n imple class : 
+Can 1 class imple multiple i/f : YES (implements)
+Can 1 i/f extend from multiple i/f :  YES (extends)
+Can 1 class extend from multiple classes : NO 
+Can 1 i/f be imple by multiple imple classes ? : YES
+Can imple class access i/f constants directly(w/o using i/fName.memberName) : YES
+Can non imple class access i/f constants directly(w/o using i/fName.memberName) : NO
+
+Objectives
+1. Demo  : 1 class implementing multiple i/fs
+2. Demo : Will you face diamond (ambiguity) issue with duplicate behaviour ?
+3. Demo : 1 i/f extending multiple i/fs , n then write imple class
+4. Marker i/f : Empty (Tag i/f) i/f --NO data members n no methods
+eg : Serializable , Cloneable
+Functional i/f : i/f containing single abstract method (SAM)
+5. Demo : Shapes scenarion using i/fs.
+
+6. Solve Vehicle equality assignment
+Problem :
+Create a class Vehicle , under the package : com.app.vehicles , to represent any vehicle. 
+tight encapsulation
+state(data members)  : registrationNo : int , color : String , price : double
+registrationNo  MUST be unique (non duplicate) for any vehicle (primary Key : unique ID)
+Get  complete state : toString
+
+Create a class TestVehicle under the package "tester"
+Accept details of 2 vehicles from user . 
+Display "SAME" or "DIFFERENT" , in case of same or different reg nos.
+
+7. "protected" access specifier , with a demo.
+
+--------------------------
+Introduction to Exception Handling : run time errors
+Flow , inheritance hierarchy , checked vs un checked excs
+keywords : try, catch 
+

@@ -1,0 +1,57 @@
+How to invoke getCity() method of the inner class ?
+Vehicle.DeliveryAddress adr=new Vehicle(...).new DeliveryAddress(..);
+adr.getCity()
+Complete assignment
+
+Generics
+
+
+Collection Framework Overview
+
+Enter : List implementation classes : ArrayList
+
+Objective 
+1. Create empty AL to store emp info.
+
+
+2. Accept all emp details from user n store it in AL
+No dups please !
+
+2.5 Populate sample data in AL
+
+
+3. Fetch Emp details from AL
+i/p : emp id
+o/p : in case of success : display emp details o.w throw custom exception
+
+4. Update emp salary n dept .
+i/p : id , salry incr , new dept id
+
+
+5. Delete emp info
+i/p : emp id
+
+6. Display names (first name n last name) of all emps joined after specfied join date
+i/p : join date
+
+7. Display emp details , whose adhar card location is from specified city
+i/p : city
+
+10. Exit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

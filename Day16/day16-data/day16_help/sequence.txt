@@ -1,0 +1,127 @@
+Today's Topics
+Revision of hashing algorithm
+Java 8 Date/Time related API
+Enter Maps
+Java 8 New Features
+
+
+Revise
+
+Why Hashing  ?
+
+Hashing is a technique to make things(CRUD , searching) more efficient by effectively narrowing down the search. 
+
+What is hashing?
+
+Hashing means using some function or algorithm to map object data to some representative integer value.
+
+This  hash code (or simply hash) can then be used as a way to narrow down our search when looking for the item in the hash-based data structure (eg : HashSet,LinkedHashSet,HashMap,LinkedHashMap,Hashtable...)
+
+If you want to add elements(refereneces) in hashing based data structure, which contract to be followed between equals n hashCode ?
+
+Mandatory part of the contract : Equal objects MUST produce SAME hashcode
+
+Optional BUT Recommended part of the contract to ensure O(1) : Unequal objs SHOULD produce distinct hash codes. 
+
+
+HOW ?
+1. Identify PK n override equals
+2. Use same fields (PK) in generating hashcode
+Hint : Use prime nos in generation of hash codes
+ eg : String , Wrapper class(Integer,Double....) , Date , LocalDate....
+: Have already followed contract(both of the branches)
+
+Revise the hashing algorithm.
+
+
+
+2. Java 8 Date/Time related APIs
+What were the limitations of the earlier Date/Time related API ? 
+Java 8 New Features 
+java.time : new package is introduced
+LocalDate : Date (immutable)(yr-mon-day)  : inherently thrd safe.
+API 
+1. public static LocalDate now()
+Obtains the current date from the system clock in the default time-zone.
+eg : 
+LocalTime : Time (immutable)(hr-min-sec)  : inherently thrd safe.
+LocalDateTime : Date n Time :  inherently thrd safe.
+eg : sop("curnt date "+now());
+2. public static LocalDate of(int year,int month,int dayOfMonth)
+Obtains an instance of LocalDate from a year, month and day.
+eg : ?????
+3. public static LocalDate parse(CharSequence text)
+Obtains an instance of LocalDate from a text string such as 2007-12-03.
+eg : LocalDate dt=LocalDate.parse(sc.next());//0 based dates
+4. Methods :
+isBefore,isAfter,isEqual,compareTo
+5. Can you change default Date format ? : YES
+HOW ?
+
+
+3. Enter Maps
+refer to a diagram : "Maps Overview"
+readmes : "Map API" n readme hashmap
+
+HashMap constructor
+public HashMap​(Map<? extends K,​? extends V> m)
+
+Can you populate HashMap<MyKey,MyValue> from 
+AL/LL/Vector : NO
+HS/LHS/TS : NO
+HM/LHM/TM : YES , what are legal K n V types : MyKey or its subtype and MyValue or it's subtype
+
+Objective :Simple Banking application using HashMap
+
+BankAccount : acctNo(int) , type(enum) , balance , creationDate(LocalDate) , customerName
+
+ctor, toString
+Additionally : hashCode n equals : as per the contract ????????????????????? : ABSOLUTELY NOT REQUIRED!!!!!!
+B.L
+withdraw,deposit, transferFunds
+
+1.1Store a/c details in a suitable D.S  to ensure const time performance for : CRUD ops n search
+Which D.S ? HashMap<Integer,BankAccount>
+
+K : Integer
+V : BankAccount
+
+
+1.2  Create a populated map with sample data.
+
+1.3 Create A/C
+
+1.4 Display details of all accts
+
+1.5  Get A/C summary
+i/p acct number 
+o/p summary or err mesg via exception
+
+1.6 Funds Transfer
+i/p : src a/c no , dest a/cno , amount
+Hint : get (finder) , transferFunds
+
+1.7 Close A/C 
+i/p a/c no
+o/p details  of the  closed a/c  or err mesg via exception
+
+1.8 Display all account details of specific account type
+i/p : a/c type
+Hint : string(type) --> enum
+map ---> Collection View(values) : Collection<BankAccount>
+
+1.9 Search A/cs by balance > specific balance , display their details.
+i/p : specific balance
+
+1.10 Remove all loan accounts.
+
+1.11 Sort account details as per acct nos (asc)
+
+-----------------------------
+Additional Help
+For more understanding of hashmap , do refer to :
+1. https://www.scientecheasy.com/2020/11/internal-working-of-hashmap-in-java.html/
+2. https://dzone.com/articles/java8-hashmap-implementation-and-performance
+3. https://www.youtube.com/watch?v=c3RVW3KGIIE
+
+

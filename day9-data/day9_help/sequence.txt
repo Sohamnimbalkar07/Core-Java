@@ -1,0 +1,48 @@
+Revise 
+Exception Handling
+eg :
+sop("int value "+Integer.parseInt("abc1234"));//this may throw NFE --- extends from RuntimeExc --un checked exc --javac DOES NOT force handling of the un chked exc.
+
+Thread.sleep(100);//javac err : javac DOES force handling of the chked exc.
+soln --throws --only for telling javac for exc delegation
+OR
+try-catch
+finally -- block will be always executed --i.e --in the absence of excs / in presence of excs / method rets ---typical use case --for closing the non java resources(eg : file handles , db conn , socket...)
+OR
+try-with -resources
+try(Scanner sc=new Scanner(System.in);........)
+{
+......
+} //JVM invokes sc.close()
+catch-all
+catch(Exception e)
+{....}
+
+throw -- keyword in exc handling
+JVM ---uses throw keyword --for raising built-in (excs that are part of java lib) excs
+eg : NFE,NPE.AOB,AE, IOException,ParseException, SQLException...
+Prog -- uses throw keyword --for raising custom excs(eg : SpeedOutOfRangeExc)
+syntax : throw Throwable instance;---method def.
+eg : throw new NumberFormatException("some err mesg");//legal BUT not required
+In case of validation failures / B.L errs -- 
+throw new SpeedOutOfRangeException(.....);//legal provided : SpeedOutOfRangeException IS-A Throwable
+
+what should be the super cls of custom excs ? --Throwable,Error,RuntimeException
+reco --Exception
+-----------------------------
+Today's Topics
+String Handling
+Date Time Handling
+
+Objective : Use exception handling , string handling & Date in emp based scenario
+Emp's attributes --emp id, first name , last name , email ,dept , join date , salary
+Add validation rules for the inputs : 
+emp id unique
+names must be min 4 max 15 chars long
+dept -- RnD , Finance, Marketing , HR
+join date -- after 1st Apr 2021
+email : "@"
+no dups (PK --unique id emp id)
+Add a Tester to hire emps
+
+

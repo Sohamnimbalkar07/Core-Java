@@ -1,0 +1,184 @@
+Today's Topics
+1. Method overriding n exception handling
+2. Multi threading
+
+Revise
+What is Serialization ? : Conversion of state of the object(=non static n non transient data memebrs) ---> binary stream
+
+What is converted into binary stream ? : state of the object + metadata info (Magic no , serial format no,F.Q cls name , class desc...)
+
+Serializer Class : ObjectOutputStream
+I/fs implemented : DataOutput,Objectoutput
+
+Constructor :ObjectOutputStream(OutputStream out)
+out : dest bin o/p stream
+
+Methods : writeInt,writeBoolean....,writeUTF,+ public void writeObject(Object o)
+
+chain of I/O streams for ser.  strm , to be stored in bin file
+Java App --->OOS --->  FOS  --->Bin File
+code :OOS out=new OOS(new FOS(fileName))
+
+
+What happened when  Product is NOT Serializable ? : 
+eg : out.writeObject(products);//products : HM<Integer,Product> : java.io.NotSerializableException
+
+Why ? JVM checks the serializability of the entire object graph
+HM , Integer , Product : any time JVM comes acrosss any object, which has not imple. Serializable i/f 
+--aborts ser. 
+ 
+
+What is de-serialization ? : re construction of the entire object graph from binary stream(FIS,PIS,SIS...)
+
+What are the pre requisites of de-serialization ?
+1. Supply(share) .class files of User defined types(eg : Customer, Order,Custom Exc,Category...) : in the run time class path => behaviour
+If not found : java.lang.ClassNotFoundException
+
+2 In case of mismatch between SerialVersionUID during de-serial : java.lang.InvalidClasExc
+
+3.For  JVM to create instance/s in the heap : provide .ser file (=metadata + state)
+
+Which is best way of sharing dependencies ? JAR file
+HOW ? : IDE (export) / jar cvf MyDependencies.jar path
+
+Class used for de-ser : ObjectInputStream
+Constructor : ObjectInputStream(InputStream in)
+I/Fs : DataInput,ObjectInput
+
+Methods : readInt,readFloat.....readUTF + public Object readObject() throws ClassNotFoundException,
+InvalidClassException , IOException
+
+chain of I/O streams
+Java App <---- OIS <---- FIS <----Bin File(.ser)
+eg : OIS in=new OIS(new FIS(file));
+return (Map<String,Book>)in.readObject();//de-serial
+
+4. Limitations of serialization
+--------------------------
+1. Method overriding n exception handling
+
+Overriding form of the method(in sub class) can't throw any NEW or BROADER CHECKED exceptions.
+
+
+Confirm with examples.
+eg :
+What will happen ?
+1.  package p1;
+class A
+{
+  void show()
+  {
+    sop("1");
+  }
+}
+
+class B extends A
+{
+  @Override
+  void show() throws InterruptedException //javac err : NEW chked exc
+  {
+    sop("2");
+  }
+}
+
+class C extends A
+{
+  @Override
+  void show() throws NullPointerException //no err : unchked exc
+    sop("3");
+  }
+}
+
+In Tester 
+A ref=new B();
+ref.show();
+
+
+2.  package p1;
+class A
+{
+  void show() throws IOException
+  {
+    sop("1");
+  }
+}
+
+class B extends A
+{
+  @Override
+  void show() //no err
+  {
+    sop("2");
+  }
+}
+
+3.  package p1;
+class A
+{
+  void show() throws IOException
+  {
+    sop("1");
+  }
+}
+
+class B extends A
+{
+  @Override
+  void show() throws FileNotFoundException //no err : since FNFE extends IOExc
+  {
+    sop("2");
+  }
+}
+4.  package p1;
+class A
+{
+  void show() throws IOException
+  {
+    sop("1");
+  }
+}
+
+class B extends A
+{
+  @Override
+  void show() throws Exception  //javac err : since Exc is a super class of IOExc : BROADER chked exc
+  {
+    sop("2");
+  }
+}
+-------------------------
+2. Enter multi threading
+
+What is multi tasking n why ?
+Process vs Threads
+Refer : Thread state transition diagram
+Refer : Threads API
+
+
+Objectives 
+Creates multiple threads n test concurrency
+1. extends Thread
+
+2. implements Runnable
+
+3. How to ensure no orphan threads ?
+(join)
+
+
+4. Consider threads :  t1 & t2 
+t1's run() : t2.join()
+t2's run() : Loop  (indefinitely running) with intermittent sleep
+main waiting for t1 n t2 to finish exec.
+What will happen ? : 
+Any way to terminate java app ?
+
+
+5. Consider threads :  t1 & t2 
+t1's run() : t2.join()
+t2's run() : Blocked on I/O
+main waiting for t1 n t2 to finish exec.
+What will happen ? : 
+Any way to terminate java app ?
+
+
+

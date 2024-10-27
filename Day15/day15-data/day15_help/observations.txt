@@ -1,0 +1,61 @@
+Condition :  equal objects are producing same hashcode : dups are detected (i.e HS is behaving correctly) : BUT not giving const time performance !!!! (hashCode=100)
+Satisfied only mandatory part of the contract.
+
+Observations :
+in hashCode
+Added true
+in hashCode
+in emp equals
+Added true
+in hashCode
+in emp equals
+in emp equals
+Added true
+in hashCode
+in emp equals
+Added false
+in hashCode
+in emp equals
+in emp equals
+in emp equals
+Added true
+in hashCode
+in emp equals
+in emp equals
+in emp equals
+in emp equals
+Added true
+size of set 5
+Set contents 
+Emp [id=rnd-001, name=Rama, salary=1000.0]
+Emp [id=rnd-008, name=Rohit, salary=2000.0]
+Emp [id=rnd-007, name=Meera, salary=3000.0]
+Emp [id=rnd-003, name=Rama, salary=1000.0]
+Emp [id=rnd-005, name=Rama, salary=1000.0]
+----------------------------------------
+ equal objects are producing same hashcode N un equals objs are producing different hashcodes : dups are detected (i.e HS is behaving correctly) : AND also giving const time performance !!!!
+Here had satisfied mandatory n optional part of the contract
+
+
+Observations :
+in hashCode
+Added true
+in hashCode
+Added true
+in hashCode
+Added true
+in hashCode
+in emp equals
+Added false
+in hashCode
+Added true
+in hashCode
+Added true
+size of set 5
+Set contents 
+Emp [id=rnd-005, name=Rama, salary=1000.0]
+Emp [id=rnd-008, name=Rohit, salary=2000.0]
+Emp [id=rnd-007, name=Meera, salary=3000.0]
+Emp [id=rnd-001, name=Rama, salary=1000.0]
+Emp [id=rnd-003, name=Rama, salary=1000.0]
+

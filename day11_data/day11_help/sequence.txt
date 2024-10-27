@@ -1,0 +1,19 @@
+HAS-A relation between 
+Employe HAS-A AdharCard
+(one to one association)
+Steps
+1. Create a separate class : AdharCard -- no, creation date , location
+constr , toString
+
+2. To establish association(containment) between Emp & AdharCard
+Add new state (instance var) : AdharCard 
+Don't init it in the constr.
+
+3. Add a method to link adhar card to emp details
+
+4. Add Option in Tester
+Link Your card
+i/p : empid , card details --no, creation date , location
+o/p : in case of invalid emp id --exc
+o.w : link card n give success message.
+

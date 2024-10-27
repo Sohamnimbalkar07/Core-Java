@@ -1,0 +1,62 @@
+1. ITC with sleep
+started thrd  -- Producer
+w entered --- Producer
+Write Data Emp [id=1, sal=100.0]
+w exited --- Producer
+Press enter to exit
+started thrd  -- Consumer
+r entered --- Consumer
+Read  Data Emp [id=1, sal=100.0]
+r exited --- Consumer  //dataReady : false
+w entered --- Producer
+Write Data Emp [id=2, sal=200.0]
+w exited --- Producer //dataReady : true
+w entered --- Producer : blocked on sleep : inside the monitor , main : blocked on i/p, after user presses enter : blocked on join
+, only runnable thrd : consumer --synched method : blocked on monitor : outside
+Deadlock : circular dependency : i.e producer is waiting inside the monitor : for consumer to read data.
+Consumer : blocked on monitor : unable to acquire to lock.
+--------------------------------------------
+2. ITC with wait
+started thrd  -- Producer
+w entered --- Producer
+Write Data Emp [id=1, sal=100.0]
+w exited --- Producer
+Press enter to exit
+started thrd  -- Consumer
+r entered --- Consumer
+Read  Data Emp [id=1, sal=100.0]
+r exited --- Consumer --dataReady : false
+w entered --- Producer : fav.
+Write Data Emp [id=2, sal=200.0]
+w exited --- Producer : dataReady : true
+w entered --- Producer : Blocked on wait : outside the monitor
+r entered --- Consumer : inside the montior : fav 
+Read  Data Emp [id=2, sal=200.0]
+r exited --- Consumer : Consumer : runnable
+r entered --- Consumer : Blocked on wait outside the monitor
+Reason behind deadlock : producer is waiting for the consumer to send explicit wake up call(notify)
+consumer is waiting for the producer to send explicit wake up call(notify)
+-------------------
+3. ITC with wait n notify
+started thrd  -- Producer
+w entered --- Producer
+Write Data Emp [id=1, sal=100.0]
+w exited --- Producer
+Press enter to exit
+started thrd  -- Consumer
+r entered --- Consumer
+Read  Data Emp [id=1, sal=100.0]
+r exited --- Consumer
+w entered --- Producer
+Write Data Emp [id=2, sal=200.0]
+w exited --- Producer
+w entered --- Producer
+r entered --- Consumer
+Read  Data Emp [id=2, sal=200.0]
+r exited --- Consumer
+Write Data Emp [id=3, sal=300.0]
+w exited --- Producer
+.....continues running w/o any deadlocks.
+
+
+

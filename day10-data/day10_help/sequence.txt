@@ -1,0 +1,54 @@
+Revise
+Date Time Handling
+java.util.Date
+Constrs : 
+Date() : cuurent date with msec precision
+Date(long msec) : creates a date class instance set to date , specified msec elapsed after epoch(1st Jab 1970)
+Methods : toString , before ,after,compareTo,equals
+eg : 
+d1.before(d2) ---d1 is date n time wise before d2
+d1.compareTo(d2) --- -1 => d1 before d2
+0 => d1.equals(d2) --true
+1 => d1 after d2
+
+eg How to accept DoB of a customer ?
+Steps
+1.Create single instnace of SDF  : static n init it using static init block
+eg : SDF sdf=new SDF("dd-MM-yyyy , HH:mm:ss");
+2. For parsing (string ---> Date)
+Date d1=sdf.parse(dateString);
+3. How to get formatted date ?
+String formattedDate=sdf.format(d1);
+
+
+
+Continue with the day9 assignment to add more validation rules 
+Objective : Use exception handling , string handling & Date in emp based scenario
+Emp's attributes --emp id, first name , last name , email ,dept , join date , salary
+Add validation rules for the inputs : 
+emp id unique
+names must be min 4 max 15 chars long
+dept -- RnD , Finance, Marketing , HR
+join date -- after 1st Apr 2021
+email : "@"
+no dups (PK --unique id emp id)
+Add a Tester to hire emps
+-----------------------------------
+
+var-args
+
+Enum : Department
+eg : Employee HAS-A Department
+
+
+Wrapper classes in Java
+
+Association : HAS-A
+
+
+
+
+
+
+
+
